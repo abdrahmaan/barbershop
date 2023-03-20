@@ -22,6 +22,11 @@
 
   <h3 class="my-3">زبائن على الكراسى</h3>
   <h3 class="mt-3">{{$Data[0]->Value}}</h3>
+
+  <div class="data-button my-3 d-flex justify-content-between align-items-center w-75">
+    <a href="/dashboard/chair/-" class="btn btn-dark w-50 mx-2 d-block fs-3  " style="border-radius: 20px">-</a>
+    <a href="/dashboard/chair/+" class="btn btn-dark w-50  d-block fs-4" style="border-radius: 20px">+</a>
+  </div>
   
   <div class="dropwdown-divider bg-dark w-75 mx-auto my-3" style="min-height: 3px"></div>
   
@@ -30,16 +35,30 @@
   
   <h3 class="mt-3">{{$Data[1]->Value}}</h3>
   
+  
+  <div class="data-button my-3 d-flex justify-content-between align-items-center w-75">
+    <a href="/dashboard/wait/-" class="btn btn-dark w-50 mx-2 d-block fs-3  " style="border-radius: 20px">-</a>
+    <a href="/dashboard/wait/+" class="btn btn-dark w-50  d-block fs-4" style="border-radius: 20px">+</a>
+  </div>
+
   <div class="dropwdown-divider bg-dark w-75 mx-auto my-3" style="min-height: 3px"></div>
   
   <img src="/includes/img/laptop.png"  width="108px" height="108px"  alt="">
   <h3 class="my-3">زبائن حجزت أونلاين</h3>
   <h3 class="my-3">0</h3>
 
+  <a href="" class="btn btn-dark w-75 mx-auto d-block my-2" style="border-radius: 20px">الحجوزات</a>
   @if ($Data[2]->Value == 1)
+
+    <a href="/dashboard/online/{{$Data[2]->Value}}" class="btn btn-danger w-75 mx-auto d-block my-2" style="border-radius: 20px">إلغاء الحجز أونلاين</a>
+    
+    
+    @else
+    
+    <a href="/dashboard/online/{{$Data[2]->Value}}" class="btn btn-success w-75 mx-auto d-block my-2" style="border-radius: 20px">تفعيل الحجز أونلاين</a>
       
-  <button class="btn btn-dark w-75 mx-auto d-block my-3" style="border-radius: 20px">حجز</button>
   @endif
+  <a href="/home" class="btn btn-dark w-75 mx-auto d-block my-2" style="border-radius: 20px">تسجيل الخروج</a>
 </section>
 
 <style>
@@ -58,47 +77,4 @@
 @endsection
 
 
-
-
-@section('script')
-    
-  <script>
-
-    let btn = document.querySelectorAll("button.btn");
-
-    btn[0].addEventListener("click",()=>{
-      let x = Swal.fire({
-        html:
-        '<div class="d-flex flex-column justify-content-center align-items-center">' +
-        '<img src="/includes/img/logo.png" class="mb-3"  width="108px" height="108px"  alt="">' +
-        '<input id="swal-input1" placeholder="إسمك" class="swal2-input text-center">' +
-        '<input id="swal-input2" placeholder="رقم التليفون" class="swal2-input text-center">' +
-        '</div>',
-        focusConfirm: false,
-        showCancelButton: true,
-        cancelButtonText:'إلغاء',
-        confirmButtonText:'حجز',
-        preConfirm: () => {
-          return [
-            document.getElementById('swal-input1').value,
-            document.getElementById('swal-input2').value
-          ]
-      }
-    })
-
-
-x.then(x => console.log(x))
-
-    })
-
-
-  </script>
-
-
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
-
-@endsection
 

@@ -8,13 +8,13 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
   <link rel="stylesheet" href="{{asset('includes/lib/bootstrap.min.css')}}">
     <!-- Css  -->
-    <link rel="stylesheet" href="{{asset('includes/home/custom/css/header.css')}}">
+    <link rel="stylesheet" href="{{asset('includes/custom/css/header.css')}}">
+    <link rel="stylesheet" href="{{asset('includes/custom/css/main.css')}}">
     @yield('css')
     <title>@yield('title')</title>
 </head>
 <body>
 
-    @yield('sidebar')
     @yield('content')
 
 
@@ -22,7 +22,6 @@
     <script src="{{asset('includes/lib/popper.js')}}"></script>
     <script src="{{asset('includes/lib/bootstrap.min.js')}}"></script>
     <script src="{{asset('includes/lib/sweetalert2.all.min.js')}}"></script>  
-    <script src="{{asset('includes/home/custom/js/classes.js')}}"></script>
 
  
 
@@ -48,6 +47,17 @@
         text: '{{session()->get("error")}}',
          confirmButtonText: "رجوع",
          confirmButtonColor: "#e01a22",
+      })
+    </script>
+    @endif
+    @if(session()->has('message'))
+    <script>
+      Swal.fire({
+        icon: "info",
+        title: "تمت العملية",
+        text: '{{session()->get("message")}}',
+         confirmButtonText: "رجوع",
+         confirmButtonColor: "#212529",
       })
     </script>
     @endif

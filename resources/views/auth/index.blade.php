@@ -1,48 +1,50 @@
 
-@extends('layout.master')
+@extends('layout.master')    
 
-@section('title', env("APP_NAME") . " | تسجيل الدخول")
-
+@section('title', env("APP_NAME") . " | أهلا")
+    
 @section('css')
-
-<link rel="stylesheet" href="{{asset('includes/custom/css/main.css')}}">
-<link rel="stylesheet" href="{{asset('includes/home/custom/css/login.css')}}">
+        <!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Changa:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 @endsection
 
+@extends('layout.headeruser')
 
-{{-- {{dd(session()->get('user-data')->Role)}} --}}
 
-@section('content')
-    <section class="login-background d-flex justify-content-center align-items-center">
-    <span class="highlight"></span>
-    <form class="w-100" action="/login" method="POST">
-        @csrf
-        
-    <div class="login-form w-75 mx-auto d-flex flex-column justify-content-center align-items-center">
-        {{-- <i class="bi bi-unlock-fill text-warning fs-1"></i> --}}
-       {{-- <h2 class="text-warning fs-1 mb-4">تسجيل الدخول</h2> --}}
-       <h2 class="text-light fs-4">إسم المستخدم</h2>
-       <input type="text" placeholder="Username" name="username" class="form-control mx-auto w-50 text-center my-2" >
-       <h2 class="text-light fs-4 mt-2">كلمة السر</h2>
-       <input type="password" placeholder="Password" name="password" class="form-control mx-auto w-50 text-center my-2" >
-       <button type="submit" class="btn-login btn btn-danger text-light  my-3">تسجيل الدخول</button>
+@section('content') 
+
+<section id="main-content" class="row d-flex py-4 flex-column justify-content-center align-items-center" style="min-height: calc(100vh - 102px)">
+
+    <div class="data-text my-3 col-10 d-flex flex-column align-items-end">
+        <h4 class="text-dark fs-5 mb-2">إسم المستخدم</h4>
+        <input type="text" class="form-control text-center" placeholder="إسم المستخدم" style="border-radius: 20px">
     </div>
-</form>
+    <div class="data-text my-2 mb-3 col-10 d-flex flex-column align-items-end">
+        <h4 class="text-dark fs-5 mb-2">كلمة السر</h4>
+        <input type="password" class="form-control text-center" placeholder="كلمة السر" style="border-radius: 20px">
+    </div>
 
+  <a href="/dashboard" class="btn btn-dark w-75 mx-auto d-block my-2" style="border-radius: 20px">تسجيل دخول</a>
+  <a href="/home" class="btn btn-danger w-75 mx-auto d-block my-2" style="border-radius: 20px">رجوع</a>
 </section>
 
-<script>
-    window.localStorage.removeItem("role");
-</script>
-    
 
 @endsection
 
-@section('script')
 
-<script src="{{asset('includes/home/custom/js/login.js')}}"></script>
+
+
+@section('script')
     
+
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
 @endsection
 
